@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .result-box {
+      margin-top: 20px;
+    }
+  </style>
+  <title>Student Grade Calculator</title>
+</head>
+<body>
+
+  <label for="marks">Enter the student marks:</label>
+  <input type="number" id="marksInput" required>
+  
+  <button type="button" onclick="calculateGrade()">Calculate Grade</button>
+
+  <div class="result-box" id="resultBox"></div>
+
+  <script>
+    function calculateGrade() {
+      const marksInput = document.getElementById('marksInput');
+      const marks = parseFloat(marksInput.value);
+
+      if (isNaN(marks) || marks < 0 || marks > 100) {
+        document.getElementById('resultBox').innerText = 'Invalid input. Please enter a number between 0 and 100.';
+      } else {
+        let grade;
+        if (marks > 79) {
+          grade = 'A';
+        } else if (marks >= 60 && marks <= 79) {
+          grade = 'B';
+        } else if (marks >= 50 && marks <= 59) {
+          grade = 'C';
+        } else if (marks >= 40 && marks <= 49) {
+          grade = 'D';
+        } else {
+          grade = 'E';
+        }
+
+        document.getElementById('resultBox').innerText = `The student's grade is: ${grade}`;
+      }
+    }
+  </script>
+
+</body>
+</html>
